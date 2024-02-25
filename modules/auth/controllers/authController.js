@@ -80,7 +80,20 @@ const login = async (req, res) => {
     }
 };
 
+const userDetail = async (req, res) => {
+    try {
+       
+     // Return success response with JWT token
+     return res.status(201).json(generateResponse(201, "User details displaied successfully", { user: req.user }));
+
+    } catch (error) {
+        return res.status(500).json(generateResponse(500, "Internal server error"));
+    }
+};
+
+
 module.exports = {
     login,
-    signup
+    signup,
+    userDetail
 };

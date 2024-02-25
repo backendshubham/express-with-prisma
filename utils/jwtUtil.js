@@ -13,6 +13,18 @@ const generateToken = (payload, expiresIn = '1h') => {
     }
 };
 
+// Function to verify JWT token
+const verifyToken = (token) => {
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        return decoded;
+    } catch (error) {
+        throw new Error('Invalid JWT token');
+    }
+};
+
+
 module.exports = {
     generateToken,
+    verifyToken
 };
